@@ -1,0 +1,67 @@
+---
+// src/components/Card.astro
+const { titulo, descripcion, tags  } = Astro.props;
+---
+
+<div class="card">
+  <h3>{titulo}</h3>
+  <p>{descripcion}</p>
+  
+  <div class="tags">
+    {tags.map((t: string) => (
+      <span class="tag">{t}</span>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Ahora sí, .card coincide con class="card" */
+  .card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra suave */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+  }
+
+  /* Efecto al pasar el mouse (Hover) */
+  .card:hover {
+    transform: translateY(-5px); /* Se levanta 5 pixeles */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Sombra más fuerte */
+    border-color: #555; 
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #111;
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: #444;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Estilos para el contenedor de etiquetas */
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Si son muchos, bajan a la siguiente línea */
+  }
+
+  /* Estilos para cada etiqueta individual */
+  .tag {
+    background: #f3f4f6;
+    color: #333;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px; /* Bordes completamente redondos (Píldora) */
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid #e5e7eb;
+  }
+</style>
